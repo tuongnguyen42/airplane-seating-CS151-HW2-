@@ -55,6 +55,8 @@ public class Airplane {
 					outputFc +="\n";
 				}
 				
+				
+				
 				if (outputFc.length()%3 == 0) {
 					outputFc += " ";
 				}	
