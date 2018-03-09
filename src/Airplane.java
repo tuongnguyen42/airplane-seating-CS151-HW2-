@@ -81,6 +81,7 @@ public class Airplane {
 		String rightColumn = "0";
 		Passenger[] p = input();
 		Queue<String> prefQ= new LinkedList<String>();
+		boolean passAdded = false;
 		
 
 		
@@ -119,13 +120,13 @@ public class Airplane {
 				for (int i = 0; i < 30; i ++) {
 					if (seatAvailableEco(String.valueOf(i), leftColumn)) {
 						ec.seatChart.put(String.valueOf(i)+leftColumn, false);
-						System.out.println("Passenger(s) added!");
+						passAdded = true;
 						break;
 
 					}
 					if (seatAvailableEco(String.valueOf(i), rightColumn)) {
 						ec.seatChart.put(String.valueOf(i)+rightColumn, false);
-						System.out.println("Passenger(s) added!");
+						passAdded = true;
 						break;
 
 					}
@@ -137,12 +138,12 @@ public class Airplane {
 				for (int i = 0; i < 5; i ++) {
 					if (seatAvailableFirst(String.valueOf(i), leftColumn)) {
 						fc.seatChart.put(String.valueOf(i)+leftColumn, false);
-						System.out.println("Passenger(s) added!");
+						passAdded = true;
 						break;
 					}
 					if (seatAvailableFirst(String.valueOf(i), rightColumn)) {
 						fc.seatChart.put(String.valueOf(i)+rightColumn, false);
-						System.out.println("Passenger(s) added!");
+						passAdded = true;
 						break;
 					}
 
@@ -154,6 +155,12 @@ public class Airplane {
 		
 		if (ec.getSeatChart().size() == 180-1 && fc.getSeatChart().size() == 30-1)
 			System.out.println("Plane is full!");
+		
+		if (passAdded == false) {
+			System.out.println("Seat preference is full please choose another seat");
+		} else if (passAdded == true) {
+			System.out.println("Passenger(s) added!");
+		}
 
 
 
